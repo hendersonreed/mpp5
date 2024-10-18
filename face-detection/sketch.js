@@ -2,11 +2,12 @@ function setup() {
   helpMsg = `
 <p>welcome.
   <ul>
-    <li>hit space to start and toggle this help page</li>
+    <li>Click to start</li>
   </ul>
 </p>
 `
-  standardSetup(helpMsg);
+  keylessSetup(helpMsg);
+  colorMode(HSB);
 }
 
 /* The `detections.multiHandLandmarks` array looks like this:
@@ -18,8 +19,8 @@ function setup() {
 function draw() {
   background(backgroundColor);
   if (detections != undefined && detections.multiFaceLandmarks != undefined && detections.multiFaceLandmarks.length != 0) {
-    detections.multiFaceLandmarks.forEach((each) => {
-      each.forEach((point) => {
+    detections.multiFaceLandmarks.forEach((eachFace) => {
+      eachFace.forEach((point) => {
         drawTealCircle(point.x * width, point.y * height);
       });
     });
@@ -28,7 +29,7 @@ function draw() {
 
 function drawTealCircle(x, y) {
   push();
-  fill(66, 245, 242);  // Teal color
+  fill(180, 100, 100);  // Teal color
   noStroke();
   circle(x, y, 10);
   pop();
